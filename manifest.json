@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Hello Extensions",
+    "name": "HackPrinceton",
     "description": "Get clothing material information by hovering over the product (currently only works in abrecrombie)",
     "version": "1.0",
     "action": {
