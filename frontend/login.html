@@ -17,9 +17,9 @@
         }
 
         .form-wrapper{
-            margin: auto;
+            margin: auto; /* margin and width specification ensures that all form elements are centered*/
             width: 50%;
-            display: block;
+            display: block; /* block display and centered text for aesthetic purposes*/
             text-align: center;
         }
 
@@ -33,12 +33,10 @@
         .custom-input {
             flex-grow: 1;
         }
-
         .custom-input input[type=radio] {
             display: none;
         }
-
-        .custom-input label {
+        .custom-input label { /* layout specification for account type selection (when unselected)*/
             display: block;
             padding: 6px 8px;
             color: #000000;
@@ -46,15 +44,14 @@
             text-align: center;
             transition : all .4s 0s ease;
         }
-
-        .custom-input input[type=radio]:checked + label {
+        .custom-input input[type=radio]:checked + label { /* layout specification for account type selection (when selected)*/
             outline: 1px solid black;
             background-color: #c2c2c2;
             color: #000;
             border-radius: 4px;
         }
 
-        .user-pwd-wrapper {
+        .user-pwd-wrapper { /* layout specification for the user/pwd form*/
             border-radius: 8px;
             outline: 1px solid black;
             display: grid;
@@ -103,30 +100,35 @@
             </div>
         </form>
     </div>
-    <p id="log"></p>
 </body>
 
 <script>
+    const form = document.getElementById("form");
+    const type = document.getElementById("student").checked;
+    const user = document.getElementById("user").value;
+    const pwd = document.getElementById("pwd").value;
 
     function logSubmit(event) {
-        log.textContent = `Form Submitted! Timestamp: ${event.timeStamp}`;
+        console.log(`Form Submitted! Timestamp: ${event.timeStamp}`);
         event.preventDefault();
     }
 
-    const form = document.getElementById("form");
-    const log = document.getElementById("log");
-    //form.addEventListener("submit", logSubmit);
+    //tests
+    form.addEventListener("submit", logSubmit); //logs the username + password entered, and whether the account type is student or teacher
+    
+    document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    function logUserPwd(event) {
-        log.textContent = `Form Submitted! \nIs Student: ${type} \nUsername: ${user} \nPassword: ${pwd}`;
-        event.preventDefault();
-    }
+        var formData = new FormData(form);
+        // output as an object
+        console.log(Object.fromEntries(formData));
 
-    const type = document.getElementById("student").checked;
-    const user = document.getElementById("user");
-    const pwd = document.getElementById("pwd");
-    form.addEventListener("submit", logUserPwd);
+        // ...or iterate through the name-value pairs
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+        }
+    });
+
     
 </script>
-
 </html>
