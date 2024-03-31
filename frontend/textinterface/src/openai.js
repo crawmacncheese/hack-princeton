@@ -15,8 +15,9 @@
 //     return res.data.choices[0].text;
 // }
 import OpenAI from "openai";
+require("dotenv").config();
 
-const openai = new OpenAI({ apiKey: "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", dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, dangerouslyAllowBrowser: true });
 
 async function main() {
   const completion = await openai.chat.completions.create({
