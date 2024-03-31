@@ -36,7 +36,7 @@ function App() {
       ...messages,
       {text, isBot: false},
     ])
-    const res = await sendMsg(input);
+    const res = await sendMsg([{role: 'user', content: input}]);
     setMessages([
       ...messages,
       {text: input, isBot: false},
@@ -46,11 +46,10 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< HEAD
       <div className = "main">
         <div className='chats'>
-          {messages.map((message, i) => 
-            <div key={i} className={message.isBot?"chat bot":"chat"}>
+          {messages.map((message) => 
+            <div key={message} className={message.isBot?"chat bot":"chat"}>
             <img src='' alt=''/>
             <p className='txt'>{message.text}</p>
             </div>
@@ -60,13 +59,6 @@ function App() {
           <div className='inp'>
             <input type='text'placeholder='Ask a question...' value={input} onChange={(e)=>{setInput(e.target.value)}} />
             <button className='send' onClick={handleSend}><img src={sendBTN} alt="button"/></button>
-          </div>
-          <div className='chatFooter'> chat footer
-            <div className='inp'> inp
-              <input type='text'placeholder='Ask a question' value={input} onChange={(e)=>{setInput(e.target.value)}} />
-              <button className='send' value="Send" onClick={handleSend}/>
-            </div>
-
           </div>
         </div>
       </div>

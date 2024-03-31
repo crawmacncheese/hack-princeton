@@ -31,10 +31,28 @@ const openai = new OpenAI({ apiKey: openaiApiKey, dangerouslyAllowBrowser: true 
 // }
 
 export async function sendMsg(message) {
-        const res = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
-            messages: [{role: "user", content: message}],
-        });
-        console.log(res.choices[0]);
-        return res.choices[0].message;
+        // const res = await openai.chat.completions.create({
+        //     model: 'gpt-3.5-turbo',
+        //     messages: [{role: "user", content: message}],
+        //     max_tokens: 150
+        // });
+        // console.log(res.choices[0]);
+        // return res.choices[0].message;
+
+        let res = await fetch("https://api.openai.com/v1/chat/completions" , {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${openaiApiKey}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: 'gpt-3.5-turbo',
+                messages: message
+            })
+        })
+
+        let resjson = await res.json()
+        if(resjson) {
+            return resjson.choices[0].message.content;
+        }
     }
