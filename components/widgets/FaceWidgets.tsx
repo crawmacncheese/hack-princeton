@@ -221,6 +221,25 @@ export function FaceWidgets({ onCalibrate }: FaceWidgetsProps) {
     }
   }
 
+  const getHigherEmotion = () => {
+    let highestEmotion = "";
+    let highestValue = -Infinity;
+
+    emotions.forEach((emotion) => {
+      if (emotion.name === "Confusion" || emotion.name === "Joy") {
+        if (emotion.score > highestValue) {
+          highestEmotion = emotion.name;
+          highestValue = emotion.score;
+        }
+      }
+    });
+
+    return highestEmotion;
+  };
+
+  // Call the function to get the higher emotion value
+  const higherEmotion = getHigherEmotion();
+
   return (
     <div>
       <div className="md:flex">
@@ -244,6 +263,7 @@ export function FaceWidgets({ onCalibrate }: FaceWidgetsProps) {
       </div>
       <div className="pt-6">{status}</div>
       <canvas className="hidden" ref={photoRef}></canvas>
+      <div> Currently feeling {higherEmotion}</div>
     </div>
   );
 }
