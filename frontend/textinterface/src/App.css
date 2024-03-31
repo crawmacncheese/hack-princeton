@@ -90,6 +90,7 @@ body {
 }
 
 .inp>input {
+  font-family: 'Poppins', sans-serif;
   width: calc(100% - 3rem);
   outline: none;
   padding: 1.25rem;
