@@ -19,7 +19,29 @@ body {
   display: flex;
 }
 
+.main-wrapper{
+  width:auto;
+  height:95vh;
+  margin:auto;
+  padding:10px;
+  display:flex;
+  flex-direction: row;
+  outline: 1px solid black; /*for visualization*/
+  text-align: center;
+}
+
+.history{
+  outline: 1px solid black;
+  width: 25vw;
+  height:auto;
+  margin: auto; /* Right margin*/
+  border-radius: 25px;
+  min-height: calc(100vh - 14rem);
+  margin: 6rem;
+}
+
 .main {
+  outline: 1px solid black; /*for visualization*/
   min-height: calc(100vh - 14rem);
   display: flex;
   flex-direction: column;
@@ -28,6 +50,7 @@ body {
 }
 
 .chat {
+  outline: 1px solid black; /*for visualization*/
   margin: 1rem;
   padding: 2rem 3rem;
   font-size: 1.2rem;
@@ -37,6 +60,7 @@ body {
 }
 
 .chats {
+  outline: 1px solid black; /*for visualization*/
   overflow: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -46,6 +70,7 @@ body {
 }
 
 .bot {
+  outline: 1px solid black; /*for visualization*/
   background: grey;
   width: fit-content;
   border-radius: 0.5rem;
@@ -53,6 +78,7 @@ body {
 }
 
 .chatFooter {
+  outline: 1px solid black; /*for visualization*/
   margin-top: auto;
   width: 100%;
   display: flex;
@@ -62,6 +88,7 @@ body {
 }
 
 .inp {
+  outline: 1px solid black; /*for visualization*/
   padding: 0.5rem;
   background:white;
   display: flex;
@@ -83,6 +110,13 @@ body {
   border: none;
 }
 
+<<<<<<< HEAD
 .button {
   color:black
 }
+=======
+.button{
+  outline: 1px solid black; /*for visualization*/
+  color:black;
+}
+>>>>>>> 72087f26c55cad9d3ebdffac7e3d8d847b2291db

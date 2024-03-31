@@ -1,68 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAME OF APP</title>
-    <style>
-        .title-wrapper{
-            margin: auto;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            width: 50%;
-            font-weight: bold;
-            font-size: 100px;
-            text-align: center;
-        }
-
-        .form-wrapper{
-            margin: auto; /* margin and width specification ensures that all form elements are centered*/
-            width: 50%;
-            display: block; /* block display and centered text for aesthetic purposes*/
-            text-align: center;
-        }
-
-        .radio-wrapper {
-            display: flex;
-            padding: 4px;
-            background-color: #f5f5f5;
-            padding-bottom: 10px;
-        }
-
-        .custom-input {
-            flex-grow: 1;
-        }
-        .custom-input input[type=radio] {
-            display: none;
-        }
-        .custom-input label { /* layout specification for account type selection (when unselected)*/
-            display: block;
-            padding: 6px 8px;
-            color: #000000;
-            font-weight: bold;
-            text-align: center;
-            transition : all .4s 0s ease;
-        }
-        .custom-input input[type=radio]:checked + label { /* layout specification for account type selection (when selected)*/
-            outline: 1px solid black;
-            background-color: #c2c2c2;
-            color: #000;
-            border-radius: 4px;
-        }
-
-        .user-pwd-wrapper { /* layout specification for the user/pwd form*/
-            border-radius: 8px;
-            outline: 1px solid black;
-            display: grid;
-	        align-items: center;
-            text-align: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            background-color: #8e8e8e;
-        }
-
-    </style>
+    <link rel="stylesheet" href = "style.css">
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
 </head>
 <body>
     <div class="title-wrapper">
@@ -70,7 +13,7 @@
     </div>
 
     <div class="form-wrapper">
-        <form id="form" login="/action_page.php">
+        <form id="form" login="/action_page.php" method="post">
             <div class="radio-description">
                 Select account type
             </div>
@@ -92,7 +35,7 @@
                 </div>
                 <div class="input-field">
                     <!-- <label for="pwd">Password<br></label> -->
-                    <input type="text" id="pwd" name="pwd" placeholder="Password"><br><br>
+                    <input type="password" id="pwd" name="pwd" placeholder="Password"><br><br>
                 </div>
                 <div class="button">
                     <input type="submit" value="Submit">
@@ -103,6 +46,7 @@
 </body>
 
 <script>
+    //import {Auth0Provider} from '@auth0/auth0-react';
     const form = document.getElementById("form");
     const type = document.getElementById("student").checked;
     const user = document.getElementById("user").value;
@@ -123,12 +67,16 @@
         // output as an object
         console.log(Object.fromEntries(formData));
 
-        // ...or iterate through the name-value pairs
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ": " + pair[1]);
-        }
+        //post info to server
+
     });
 
-    
+/*
+    var client = new Autho0Client(new Auth0ClientOptions {
+        Domain = "dev-zf4gvfivs5wpvmt1.us.auth0.com",
+        ClientId = "ALQpGoHK2aO1jVeWoIuRsZABd9Lb0RXD"
+    });
+    var loginResult = await client.LoginAsync(new { audience = "https://dev-zf4gvfivs5wpvmt1.us.auth0.com/api/v2/" });
+*/
 </script>
 </html>
