@@ -74,11 +74,15 @@ body {
   width: calc(100% - 3rem);
   outline: none;
   padding: 1.25rem;
-  color:white;
+  color:black;
 }
 
 
 .inp>input, .send {
   background: transparent;
   border: none;
+}
+
+.button {
+  color:black
 }
