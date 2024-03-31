@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+.App {
+  background:#FF8F00;
+  min-height: 100vh;
+  display: flex;
+}
+
+.main-wrapper{
+  width:auto;
+  height:95vh;
+  margin:auto;
+  padding:10px;
+  display:flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.history{
+  width: 25vw;
+  height:auto;
+  margin: auto; /* Right margin*/
+  border-radius: 25px;
+  min-height: calc(100vh - 14rem);
+  margin: 6rem;
+}
+
+.main {
+  min-height: calc(100vh - 14rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 6rem 10rem;
+}
+
+.chat {
+  margin: 1rem;
+  padding: 2rem 3rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  text-align: justify;
+}
+
+.chats {
+  overflow: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 68rem;
+  height: calc(100vh - 17rem);
+}
+
+.bot {
+  background: grey;
+  width: fit-content;
+  border-radius: 0.5rem;
+
+}
+
+.chatFooter {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inp {
+  padding: 0.5rem;
+  background:white;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 70rem;
+}
+
+.inp>input {
+  width: calc(100% - 3rem);
+  outline: none;
+  padding: 1.25rem;
+  color:black;
+}
+
+
+.inp>input, .send {
+  background: transparent;
+  border: none;
+}
+
+.button {
+  color:black
+}
