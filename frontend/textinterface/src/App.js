@@ -1,6 +1,6 @@
 import './App.css';
 import { sendMsg } from './openai';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import sendBTN from './assets/send.svg';
 
 function App() {
@@ -23,11 +23,17 @@ function App() {
 	},[])
   */
 
+  const msgEnd = useRef(null);
+
   const[input, setInput] = useState("");
   const[messages, setMessages] = useState([{
-    text: "Hi, I am NAME OF OUR APP",
+    text: "Hi, I am AIMLearn. Feel free to ask me anything!",
     isBot: true,
   }]);
+
+  useEffect(()=>{
+    msgEnd.current.scrollIntoView();
+  }, [messages]);
 
   const handleSend = async () => {
     const text = input;
@@ -44,6 +50,10 @@ function App() {
     ]);
   }
 
+  const handleEnter = async (e) => {
+    if (e.key === 'Enter') await handleSend();
+  }
+
   return (
     <div className="App">
       <div className = "main">
@@ -54,10 +64,11 @@ function App() {
             <p className='txt'>{message.text}</p>
             </div>
           )}
+          <div ref={msgEnd}/>
         </div>
         <div className='chatFooter'>
           <div className='inp'>
-            <input type='text'placeholder='Ask a question...' value={input} onChange={(e)=>{setInput(e.target.value)}} />
+            <input type='text'placeholder='Ask a question...' value={input} onKeyDown={handleEnter} onChange={(e)=>{setInput(e.target.value)}} />
             <button className='send' onClick={handleSend}><img src={sendBTN} alt="button"/></button>
           </div>
         </div>
